@@ -1,0 +1,83 @@
+generated: '2026-07-19'
+method: searched
+source: >-
+  https://www.vanta.com/customers/leantaas, https://trust.leantaas.com/,
+  https://leantaas.com/privacy-policy/, and live DNS/TLS/HTTP probes recorded
+  in security/leantaas-domain-security.yml. LeanTaaS publishes no OpenAPI or
+  developer documentation, so no API-technical standard could be derived from
+  a specification — those entries are recorded as not-assessable rather than
+  as failures.
+description: >-
+  Standards and compliance posture for LeanTaaS. LeanTaaS is a healthcare
+  capacity-management SaaS (iQueue for Operating Rooms, Infusion Centers and
+  Inpatient Flow) that integrates with hospital EHRs under contract. It runs no
+  public API program, so the cross-cutting API standards below are marked
+  not-assessable; the healthcare compliance standards are verified against
+  first-party published statements.
+standards:
+  - id: hipaa
+    conforms: true
+    evidence: >-
+      LeanTaaS implemented HIPAA alongside HITRUST r2 and SOC 2 in Vanta
+      (vanta.com/customers/leantaas). LeanTaaS processes PHI as a business
+      associate for US hospitals and health systems.
+  - id: hitrust
+    conforms: true
+    version: r2
+    evidence: >-
+      "In Vanta, LeanTaaS implemented HITRUST r2 alongside HIPAA and SOC 2."
+      (vanta.com/customers/leantaas)
+  - id: soc2
+    conforms: true
+    evidence: >-
+      Named as an implemented framework (vanta.com/customers/leantaas); reports
+      are gated behind the Trust Center access flow at trust.leantaas.com.
+      Report type not published, so not asserted.
+  - id: dmarc
+    conforms: true
+    evidence: >-
+      DMARC record present with policy p=reject on leantaas.com
+      (security/leantaas-domain-security.yml).
+  - id: spf
+    conforms: true
+    evidence: SPF record present on leantaas.com (security/leantaas-domain-security.yml).
+  - id: tls
+    conforms: true
+    evidence: >-
+      leantaas.com negotiates TLSv1.3 (security/leantaas-domain-security.yml).
+  - id: hsts
+    conforms: false
+    evidence: >-
+      No Strict-Transport-Security header observed on leantaas.com
+      (security/leantaas-domain-security.yml).
+  - id: dnssec
+    conforms: false
+    evidence: DNSSEC not enabled for leantaas.com.
+  - id: caa
+    conforms: false
+    evidence: No CAA records published for leantaas.com.
+  - id: fhir
+    conforms: null
+    evidence: >-
+      Not assessable. LeanTaaS integrates with hospital EHRs, but no public
+      documentation of an HL7 v2 or FHIR interface was found; integration
+      details are contracted per health system and not published.
+  - id: oauth2
+    conforms: null
+    evidence: >-
+      Not assessable. No public API, no OAuth documentation, and no
+      /.well-known/oauth-authorization-server (404).
+  - id: oidc
+    conforms: null
+    evidence: >-
+      Not assessable. No /.well-known/openid-configuration on any LeanTaaS
+      host (404).
+  - id: rfc9457
+    conforms: null
+    evidence: Not assessable. No OpenAPI or published error reference.
+  - id: pagination
+    conforms: null
+    evidence: Not assessable. No OpenAPI or published API reference.
+  - id: idempotency
+    conforms: null
+    evidence: Not assessable. No OpenAPI or published API reference.

@@ -1,0 +1,56 @@
+generated: '2026-07-19'
+method: searched
+description: >-
+  Results of probing the /.well-known/ discovery surface for every host
+  associated with LeanTaaS. LeanTaaS publishes no public API program, so the
+  only probeable hosts are the marketing site (leantaas.com), the Vanta-hosted
+  Trust Center (trust.leantaas.com) and the iQueue hostname. Every probe
+  returned 404 or redirected away; nothing was saved verbatim. An empty result
+  is the honest outcome, not a gap in the probe.
+hosts:
+  - host: https://leantaas.com
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+      - path: /llms.txt
+        status: 404
+      - path: /robots.txt
+        status: 200
+        type: text/plain
+        note: >-
+          WordPress default plus Shield security plugin rules; declares
+          sitemap https://leantaas.com/sitemap_index.xml. Not saved (no
+          discovery value).
+  - host: https://iqueue.leantaas.com
+    documents:
+      - path: /
+        status: 200
+        note: >-
+          Resolves but redirects to https://leantaas.com/ — no distinct
+          application or API surface served at this hostname at probe time.
+  - host: https://trust.leantaas.com
+    documents:
+      - path: /
+        status: 200
+        note: Vanta-hosted Trust Center SPA. See security/leantaas-trust-center.yml.
+      - path: /graphql
+        status: 400
+        note: >-
+          Vanta signed-query GraphQL endpoint; rejects unsigned requests with
+          "Missing `signature` or `signedAt`". Not a LeanTaaS-operated API.
+subdomains_probed:
+  - {host: api.leantaas.com, result: NXDOMAIN}
+  - {host: developer.leantaas.com, result: NXDOMAIN}
+  - {host: developers.leantaas.com, result: NXDOMAIN}
+  - {host: docs.leantaas.com, result: NXDOMAIN}
+  - {host: status.leantaas.com, result: NXDOMAIN}
+  - {host: support.leantaas.com, result: NXDOMAIN}
+  - {host: app.leantaas.com, result: NXDOMAIN}
