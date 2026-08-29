@@ -10,6 +10,17 @@ description: 'LeanTaaS is a healthcare capacity-management software company foun
   since 2022. LeanTaaS operates no public API program: there is no developer portal, API reference, OpenAPI
   description, SDK or sandbox, and EHR integration is contracted per health system rather than published.'
 url: https://raw.githubusercontent.com/api-evangelist/leantaas/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
